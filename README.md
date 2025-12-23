@@ -145,11 +145,170 @@ This server provides tools for interacting with an SAP system via ADT (ABAP Deve
     *   `version`: (string, optional) The version.
     *   Returns syntax check results, including any errors.
 
-*   **`activate`:** Activates an ABAP object. (See notes below on activation/unlocking.)
-    *    `object`: The object to be activated.
+*   **`activateByName`:** Activates an ABAP object using its name and URL. (See notes below on activation/unlocking.)
+    *   `objectName`: (string, required) Name of the object.
+    *   `objectUrl`: (string, required) URL of the object.
+*   **`activateObjects`:** Activates one or more ABAP objects using object references (e.g., from `inactiveObjects`).
+    *   `objects`: (string, required) JSON array of object references to activate.
 
 *   **`getObjectSource`:** Retrieves the source code of an ABAP object.
     *   `objectSourceUrl`: (string, required) The object's URI *with the suffix `/source/main`*.
+
+**All Tools (complete list with descriptions):**
+
+*   **Health:**
+    *   `healthcheck`: Check server health and connectivity
+*   **Authentication:**
+    *   `login`: Authenticate with ABAP system
+    *   `logout`: Terminate ABAP session
+    *   `dropSession`: Clear local session cache
+*   **Transports:**
+    *   `transportInfo`: Get transport information for an object source
+    *   `createTransport`: Create a new transport request
+    *   `hasTransportConfig`: Check if transport configuration exists
+    *   `transportConfigurations`: Retrieves transport configurations.
+    *   `getTransportConfiguration`: Retrieves a specific transport configuration.
+    *   `setTransportsConfig`: Sets transport configurations.
+    *   `createTransportsConfig`: Creates transport configurations.
+    *   `userTransports`: Retrieves transports for a user.
+    *   `transportsByConfig`: Retrieves transports by configuration.
+    *   `transportDelete`: Deletes a transport.
+    *   `transportRelease`: Releases a transport.
+    *   `transportSetOwner`: Sets the owner of a transport.
+    *   `transportAddUser`: Adds a user to a transport.
+    *   `systemUsers`: Retrieves a list of system users.
+    *   `transportReference`: Retrieves a transport reference.
+*   **Objects:**
+    *   `objectStructure`: Get object structure details
+    *   `searchObject`: Search for objects
+    *   `findObjectPath`: Find path for an object
+    *   `objectTypes`: Retrieves object types.
+    *   `reentranceTicket`: Retrieves a reentrance ticket.
+*   **Classes:**
+    *   `classIncludes`: Get class includes structure
+    *   `classComponents`: List class components
+*   **Code Analysis:**
+    *   `syntaxCheckCode`: Perform ABAP syntax check with source code
+    *   `syntaxCheckCdsUrl`: Perform ABAP syntax check with CDS URL
+    *   `codeCompletion`: Get code completion suggestions
+    *   `findDefinition`: Find symbol definition
+    *   `usageReferences`: Find symbol references
+    *   `syntaxCheckTypes`: Retrieves syntax check types.
+    *   `codeCompletionFull`: Performs full code completion.
+    *   `runClass`: Runs a class.
+    *   `codeCompletionElement`: Retrieves code completion element information.
+    *   `usageReferenceSnippets`: Retrieves usage reference snippets.
+    *   `fixProposals`: Retrieves fix proposals.
+    *   `fixEdits`: Applies fix edits.
+    *   `fragmentMappings`: Retrieves fragment mappings.
+    *   `abapDocumentation`: Retrieves ABAP documentation.
+*   **Locks:**
+    *   `lock`: Lock an object
+    *   `unLock`: Unlock an object
+*   **Object Source:**
+    *   `getObjectSource`: Retrieves source code for ABAP objects
+    *   `setObjectSource`: Sets source code for ABAP objects
+*   **Object Deletion:**
+    *   `deleteObject`: Deletes an ABAP object from the system
+*   **Activation & Inactive Objects:**
+    *   `activateObjects`: Activate ABAP objects using object references
+    *   `activateByName`: Activate an ABAP object using name and URL
+    *   `inactiveObjects`: Get list of inactive objects
+*   **Object Creation & Registration:**
+    *   `objectRegistrationInfo`: Get registration information for an ABAP object
+    *   `validateNewObject`: Validate parameters for a new ABAP object
+    *   `createObject`: Create a new ABAP object
+*   **Node/Hierarchy:**
+    *   `nodeContents`: Retrieves the contents of a node in the ABAP repository tree.
+    *   `mainPrograms`: Retrieves the main programs for a given include.
+*   **ADT Discovery:**
+    *   `featureDetails`: Retrieves details for a given feature.
+    *   `collectionFeatureDetails`: Retrieves details for a given collection feature.
+    *   `findCollectionByUrl`: Finds a collection by its URL.
+    *   `loadTypes`: Loads object types.
+    *   `adtDiscovery`: Performs ADT discovery.
+    *   `adtCoreDiscovery`: Performs ADT core discovery.
+    *   `adtCompatibiliyGraph`: Retrieves the ADT compatibility graph.
+*   **Unit Tests:**
+    *   `unitTestRun`: Runs unit tests.
+    *   `unitTestEvaluation`: Evaluates unit test results.
+    *   `unitTestOccurrenceMarkers`: Retrieves unit test occurrence markers.
+    *   `createTestInclude`: Creates a test include for a class.
+*   **Pretty Printer:**
+    *   `prettyPrinterSetting`: Retrieves the pretty printer settings.
+    *   `setPrettyPrinterSetting`: Sets the pretty printer settings.
+    *   `prettyPrinter`: Formats ABAP code using the pretty printer.
+*   **Git:**
+    *   `gitRepos`: Retrieves a list of Git repositories.
+    *   `gitExternalRepoInfo`: Retrieves information about an external Git repository.
+    *   `gitCreateRepo`: Creates a new Git repository.
+    *   `gitPullRepo`: Pulls changes from a Git repository.
+    *   `gitUnlinkRepo`: Unlinks a Git repository.
+    *   `stageRepo`: Stages changes in a Git repository.
+    *   `pushRepo`: Pushes changes to a Git repository.
+    *   `checkRepo`: Checks a Git repository.
+    *   `remoteRepoInfo`: Retrieves information about a remote Git repository.
+    *   `switchRepoBranch`: Switches the branch of a Git repository.
+*   **DDIC:**
+    *   `annotationDefinitions`: Retrieves annotation definitions.
+    *   `ddicElement`: Retrieves information about a DDIC element.
+    *   `ddicRepositoryAccess`: Accesses the DDIC repository.
+    *   `packageSearchHelp`: Performs a package search help.
+*   **Service Bindings:**
+    *   `publishServiceBinding`: Publishes a service binding.
+    *   `unPublishServiceBinding`: Unpublishes a service binding.
+    *   `bindingDetails`: Retrieves details of a service binding.
+*   **Queries:**
+    *   `tableContents`: Retrieves the contents of an ABAP table.
+    *   `runQuery`: Runs a SQL query on the target system.
+*   **Feeds & Dumps:**
+    *   `feeds`: Retrieves a list of feeds.
+    *   `dumps`: Retrieves a list of dumps.
+*   **Debugger:**
+    *   `debuggerListeners`: Retrieves a list of debugger listeners.
+    *   `debuggerListen`: Listens for debugging events.
+    *   `debuggerDeleteListener`: Stops a debug listener.
+    *   `debuggerSetBreakpoints`: Sets breakpoints.
+    *   `debuggerDeleteBreakpoints`: Deletes breakpoints.
+    *   `debuggerAttach`: Attaches the debugger.
+    *   `debuggerSaveSettings`: Saves debugger settings.
+    *   `debuggerStackTrace`: Retrieves the debugger stack trace.
+    *   `debuggerVariables`: Retrieves debugger variables.
+    *   `debuggerChildVariables`: Retrieves child variables of a debugger variable.
+    *   `debuggerStep`: Performs a debugger step.
+    *   `debuggerGoToStack`: Navigates to a specific stack entry in the debugger.
+    *   `debuggerSetVariableValue`: Sets the value of a debugger variable.
+*   **Rename Refactoring:**
+    *   `renameEvaluate`: Evaluates a rename refactoring.
+    *   `renamePreview`: Previews a rename refactoring.
+    *   `renameExecute`: Executes a rename refactoring.
+*   **ATC:**
+    *   `atcCustomizing`: Retrieves ATC customizing information.
+    *   `atcCheckVariant`: Retrieves information about an ATC check variant.
+    *   `createAtcRun`: Creates an ATC run.
+    *   `atcWorklists`: Retrieves ATC worklists.
+    *   `atcUsers`: Retrieves a list of ATC users.
+    *   `atcExemptProposal`: Retrieves an ATC exemption proposal.
+    *   `atcRequestExemption`: Requests an ATC exemption.
+    *   `isProposalMessage`: Checks if a given object is a proposal message.
+    *   `atcContactUri`: Retrieves the contact URI for an ATC finding.
+    *   `atcChangeContact`: Changes the contact for an ATC finding.
+*   **Trace:**
+    *   `tracesList`: Retrieves a list of traces.
+    *   `tracesListRequests`: Retrieves a list of trace requests.
+    *   `tracesHitList`: Retrieves the hit list for a trace.
+    *   `tracesDbAccess`: Retrieves database access information for a trace.
+    *   `tracesStatements`: Retrieves statements for a trace.
+    *   `tracesSetParameters`: Sets trace parameters.
+    *   `tracesCreateConfiguration`: Creates a trace configuration.
+    *   `tracesDeleteConfiguration`: Deletes a trace configuration.
+    *   `tracesDelete`: Deletes a trace.
+*   **Extract Method Refactoring:**
+    *   `extractMethodEvaluate`: Evaluates an extract method refactoring.
+    *   `extractMethodPreview`: Previews an extract method refactoring.
+    *   `extractMethodExecute`: Executes an extract method refactoring.
+*   **Revisions:**
+    *   `revisions`: Retrieves revisions for an object.
 
 **Workflow for Modifying ABAP Code:**
 
@@ -160,7 +319,7 @@ This server provides tools for interacting with an SAP system via ADT (ABAP Deve
 5.  **Lock the object:** Use `lock`.
 6.  **Set the modified source code:** Use `setObjectSource` (with the `/source/main` suffix).
 7.  **Perform a syntax check:** Use `syntaxCheckCode`.
-8.  **Activate** the object, Use `activate`..
+8.  **Activate** the object: Use `activateByName` (or `activateObjects`).
 9.  **unLock the object:** Use `unLock`.
 
 **Important Notes:**
@@ -169,7 +328,7 @@ This server provides tools for interacting with an SAP system via ADT (ABAP Deve
 *   **URL Suffix:**  Remember to add `/source/main` to the object URI when using `setObjectSource` and `getObjectSource`.
 *   **Transport Request:** Obtain the transport request number (e.g., from `transportInfo` or from the user) and include it in relevant operations.
 *   **Lock Handle:**  The `lockHandle` obtained from the `lock` operation is crucial for `setObjectSource` and `unLock`. Ensure you are using a valid `lockHandle`. If a lock fails, you may need to re-acquire the lock. Locks can expire or be released by other users.
-*   **Activation/Unlocking Order:** The exact order of `activate` and `unLock` operations might need clarification. Refer to the tool descriptions or ask the user. It appears `activate` can be used without unlocking first.
+*   **Activation/Unlocking Order:** The exact order of `activateByName`/`activateObjects` and `unLock` operations might need clarification. Refer to the tool descriptions or ask the user.
 * **Error Handling:** The tools return JSON responses. Check for error messages within these responses.
 
 ## Efficient Database Access
@@ -188,10 +347,8 @@ SAP systems contain vast amounts of data.  It's crucial to write ABAP code that 
 
 When working with ABAP objects, you may encounter errors related to unknown field names or incorrect table usage.  You can use the following tools to inspect table and structure definitions:
 
-*   **`GetTable`:** Use this tool to retrieve the structure of an ABAP Dictionary table, including its field names and data types. This is helpful for verifying the correct fields to use in your `SELECT` statements.
-*    If you need to inspect an include structure, you may need to use `searchObject` to find the include and then use `GetTypeInfo` or `GetStructure`. You may get a 404 error and try again with `GetStructure`
-*   **`GetStructure`:** Use this tool to retrieve the structure of an ABAP Dictionary structure, including its field names and data types. This is helpful for verifying the correct fields to use in your `SELECT` statements.
-*    If you need to inspect an include structure, you may need to use `searchObject` to find the include and then use `GetTypeInfo` or `GetStructure`.
+*   **`ddicElement`:** Use this tool to retrieve metadata for DDIC elements (tables/structures/views), including field names and data types. This is helpful for verifying the correct fields to use in your `SELECT` statements.
+*   **`ddicRepositoryAccess`:** Use this tool to browse/read DDIC repository content if you need additional context around a DDIC element.
 
 ```
 

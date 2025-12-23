@@ -1,4 +1,14 @@
+import fs from 'fs';
 type LogLevel = 'error' | 'warn' | 'info' | 'debug';
+const logFile = process.env.MCP_LOG_FILE || '/tmp/mcp-abap-abap-adt-api.log';
+
+function appendLog(logString: string) {
+  try {
+    fs.appendFileSync(logFile, `${logString}\n`);
+  } catch {
+    // Ignore file logging errors to avoid crashing the server.
+  }
+}
 
 export function createLogger(name: string) {
   return {
@@ -25,20 +35,9 @@ function log(level: LogLevel, name: string, message: string, meta?: Record<strin
   
   const logString = JSON.stringify(logEntry, null, 2);
   
-  switch (level) {
-    case 'error':
-      console.error(logString);
-      break;
-    case 'warn':
-      console.warn(logString);
-      break;
-    case 'info':
-      console.info(logString);
-      break;
-    case 'debug':
-      console.debug(logString);
-      break;
-  }
+  // Use stderr to avoid corrupting MCP stdio protocol on stdout.
+  console.error(logString);
+  appendLog(logString);
 }
 
 export type Logger = ReturnType<typeof createLogger>;
