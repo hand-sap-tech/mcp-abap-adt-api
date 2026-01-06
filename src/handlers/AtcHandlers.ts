@@ -81,88 +81,88 @@ export class AtcHandlers extends BaseHandler {
                     required: ['runResultId']
                 }
             },
-            {
-                name: 'atcUsers',
-                description: 'Retrieves a list of ATC users.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {}
-                }
-            },
-            {
-                name: 'atcExemptProposal',
-                description: 'Retrieves an ATC exemption proposal.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        markerId: {
-                            type: 'string',
-                            description: 'The ID of the marker.'
-                        }
-                    },
-                    required: ['markerId']
-                }
-            },
-            {
-                name: 'atcRequestExemption',
-                description: 'Requests an ATC exemption.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        proposal: {
-                            type: 'object',
-                            description: 'The ATC exemption proposal.'
-                        }
-                    },
-                    required: ['proposal']
-                }
-            },
-            {
-                name: 'isProposalMessage',
-                description: 'Checks if a given object is a proposal message.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        proposal: {
-                            type: 'object',
-                            description: 'The ATC exemption proposal.'
-                        }
-                    },
-                    required: ['proposal']
-                }
-            },
-            {
-                name: 'atcContactUri',
-                description: 'Retrieves the contact URI for an ATC finding.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        findingUri: {
-                            type: 'string',
-                            description: 'The URI of the ATC finding.'
-                        }
-                    },
-                    required: ['findingUri']
-                }
-            },
-            {
-                name: 'atcChangeContact',
-                description: 'Changes the contact for an ATC finding.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        itemUri: {
-                            type: 'string',
-                            description: 'The URI of the item.'
-                        },
-                        userId: {
-                            type: 'string',
-                            description: 'The ID of the user.'
-                        }
-                    },
-                    required: ['itemUri', 'userId']
-                }
-            }
+            // {
+            //     name: 'atcUsers',
+            //     description: 'Retrieves a list of ATC users.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {}
+            //     }
+            // },
+            // {
+            //     name: 'atcExemptProposal',
+            //     description: 'Retrieves an ATC exemption proposal.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             markerId: {
+            //                 type: 'string',
+            //                 description: 'The ID of the marker.'
+            //             }
+            //         },
+            //         required: ['markerId']
+            //     }
+            // },
+            // {
+            //     name: 'atcRequestExemption',
+            //     description: 'Requests an ATC exemption.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             proposal: {
+            //                 type: 'object',
+            //                 description: 'The ATC exemption proposal.'
+            //             }
+            //         },
+            //         required: ['proposal']
+            //     }
+            // },
+            // {
+            //     name: 'isProposalMessage',
+            //     description: 'Checks if a given object is a proposal message.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             proposal: {
+            //                 type: 'object',
+            //                 description: 'The ATC exemption proposal.'
+            //             }
+            //         },
+            //         required: ['proposal']
+            //     }
+            // },
+            // {
+            //     name: 'atcContactUri',
+            //     description: 'Retrieves the contact URI for an ATC finding.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             findingUri: {
+            //                 type: 'string',
+            //                 description: 'The URI of the ATC finding.'
+            //             }
+            //         },
+            //         required: ['findingUri']
+            //     }
+            // },
+            // {
+            //     name: 'atcChangeContact',
+            //     description: 'Changes the contact for an ATC finding.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             itemUri: {
+            //                 type: 'string',
+            //                 description: 'The URI of the item.'
+            //             },
+            //             userId: {
+            //                 type: 'string',
+            //                 description: 'The ID of the user.'
+            //             }
+            //         },
+            //         required: ['itemUri', 'userId']
+            //     }
+            // }
         ];
     }
 

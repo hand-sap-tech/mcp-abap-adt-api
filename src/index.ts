@@ -195,7 +195,7 @@ export class AbapAdtServer extends Server {
             ...this.serviceBindingHandlers.getTools(),
             ...this.queryHandlers.getTools(),
             ...this.feedHandlers.getTools(),
-            ...this.debugHandlers.getTools(),
+            // ...this.debugHandlers.getTools(),
             ...this.renameHandlers.getTools(),
             ...this.atcHandlers.getTools(),
             ...this.traceHandlers.getTools(),

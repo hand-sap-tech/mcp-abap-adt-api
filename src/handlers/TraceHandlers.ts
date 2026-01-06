@@ -6,147 +6,147 @@ import { ADTClient, TraceStatementOptions, TraceParameters, TracesCreationConfig
 export class TraceHandlers extends BaseHandler {
     getTools(): ToolDefinition[] {
         return [
-            {
-                name: 'tracesList',
-                description: 'Retrieves a list of traces.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        user: {
-                            type: 'string',
-                            description: 'The user.',
-                            optional: true
-                        }
-                    }
-                }
-            },
-            {
-                name: 'tracesListRequests',
-                description: 'Retrieves a list of trace requests.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        user: {
-                            type: 'string',
-                            description: 'The user.',
-                            optional: true
-                        }
-                    }
-                }
-            },
-            {
-                name: 'tracesHitList',
-                description: 'Retrieves the hit list for a trace.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        id: {
-                            type: 'string',
-                            description: 'The ID of the trace.'
-                        },
-                        withSystemEvents: {
-                            type: 'boolean',
-                            description: 'Whether to include system events.',
-                            optional: true
-                        }
-                    },
-                    required: ['id']
-                }
-            },
-            {
-                name: 'tracesDbAccess',
-                description: 'Retrieves database access information for a trace.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        id: {
-                            type: 'string',
-                            description: 'The ID of the trace.'
-                        },
-                        withSystemEvents: {
-                            type: 'boolean',
-                            description: 'Whether to include system events.',
-                            optional: true
-                        }
-                    },
-                    required: ['id']
-                }
-            },
-            {
-                name: 'tracesStatements',
-                description: 'Retrieves statements for a trace.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        id: {
-                            type: 'string',
-                            description: 'The ID of the trace.'
-                        },
-                        options: {
-                            type: 'string',
-                            description: 'Options for retrieving statements.',
-                            optional: true
-                        }
-                    },
-                    required: ['id']
-                }
-            },
-            {
-                name: 'tracesSetParameters',
-                description: 'Sets trace parameters.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        parameters: {
-                            type: 'string',
-                            description: 'The trace parameters.'
-                        }
-                    },
-                    required: ['parameters']
-                }
-            },
-            {
-                name: 'tracesCreateConfiguration',
-                description: 'Creates a trace configuration.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        config: {
-                            type: 'string',
-                            description: 'The trace configuration.'
-                        }
-                    },
-                    required: ['config']
-                }
-            },
-            {
-                name: 'tracesDeleteConfiguration',
-                description: 'Deletes a trace configuration.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        id: {
-                            type: 'string',
-                            description: 'The ID of the trace configuration.'
-                        }
-                    },
-                    required: ['id']
-                }
-            },
-            {
-                name: 'tracesDelete',
-                description: 'Deletes a trace.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        id: {
-                            type: 'string',
-                            description: 'The ID of the trace.'
-                        }
-                    },
-                    required: ['id']
-                }
-            }
+            // {
+            //     name: 'tracesList',
+            //     description: 'Retrieves a list of traces.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The user.',
+            //                 optional: true
+            //             }
+            //         }
+            //     }
+            // },
+            // {
+            //     name: 'tracesListRequests',
+            //     description: 'Retrieves a list of trace requests.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The user.',
+            //                 optional: true
+            //             }
+            //         }
+            //     }
+            // },
+            // {
+            //     name: 'tracesHitList',
+            //     description: 'Retrieves the hit list for a trace.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             id: {
+            //                 type: 'string',
+            //                 description: 'The ID of the trace.'
+            //             },
+            //             withSystemEvents: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to include system events.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['id']
+            //     }
+            // },
+            // {
+            //     name: 'tracesDbAccess',
+            //     description: 'Retrieves database access information for a trace.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             id: {
+            //                 type: 'string',
+            //                 description: 'The ID of the trace.'
+            //             },
+            //             withSystemEvents: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to include system events.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['id']
+            //     }
+            // },
+            // {
+            //     name: 'tracesStatements',
+            //     description: 'Retrieves statements for a trace.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             id: {
+            //                 type: 'string',
+            //                 description: 'The ID of the trace.'
+            //             },
+            //             options: {
+            //                 type: 'string',
+            //                 description: 'Options for retrieving statements.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['id']
+            //     }
+            // },
+            // {
+            //     name: 'tracesSetParameters',
+            //     description: 'Sets trace parameters.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             parameters: {
+            //                 type: 'string',
+            //                 description: 'The trace parameters.'
+            //             }
+            //         },
+            //         required: ['parameters']
+            //     }
+            // },
+            // {
+            //     name: 'tracesCreateConfiguration',
+            //     description: 'Creates a trace configuration.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             config: {
+            //                 type: 'string',
+            //                 description: 'The trace configuration.'
+            //             }
+            //         },
+            //         required: ['config']
+            //     }
+            // },
+            // {
+            //     name: 'tracesDeleteConfiguration',
+            //     description: 'Deletes a trace configuration.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             id: {
+            //                 type: 'string',
+            //                 description: 'The ID of the trace configuration.'
+            //             }
+            //         },
+            //         required: ['id']
+            //     }
+            // },
+            // {
+            //     name: 'tracesDelete',
+            //     description: 'Deletes a trace.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             id: {
+            //                 type: 'string',
+            //                 description: 'The ID of the trace.'
+            //             }
+            //         },
+            //         required: ['id']
+            //     }
+            // }
         ];
     }
 

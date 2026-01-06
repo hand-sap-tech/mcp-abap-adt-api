@@ -6,322 +6,322 @@ import { DebuggingMode, DebuggerScope, DebugBreakpoint, DebugSettings } from 'ab
 export class DebugHandlers extends BaseHandler {
     getTools(): ToolDefinition[] {
         return [
-            {
-                name: 'debuggerListeners',
-                description: 'Retrieves a list of debugger listeners.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        debuggingMode: {
-                            type: 'string',
-                            description: 'The debugging mode.'
-                        },
-                        terminalId: {
-                            type: 'string',
-                            description: 'The terminal ID.'
-                        },
-                        ideId: {
-                            type: 'string',
-                            description: 'The IDE ID.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The user.'
-                        },
-                        checkConflict: {
-                            type: 'boolean',
-                            description: 'Whether to check for conflicts.',
-                            optional: true
-                        }
-                    },
-                    required: ['debuggingMode', 'terminalId', 'ideId', 'user']
-                }
-            },
-            {
-                name: 'debuggerListen',
-                description: 'Listens for debugging events.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        debuggingMode: {
-                            type: 'string',
-                            description: 'The debugging mode.'
-                        },
-                        terminalId: {
-                            type: 'string',
-                            description: 'The terminal ID.'
-                        },
-                        ideId: {
-                            type: 'string',
-                            description: 'The IDE ID.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The user.'
-                        },
-                        checkConflict: {
-                            type: 'boolean',
-                            description: 'Whether to check for conflicts.',
-                            optional: true
-                        },
-                        isNotifiedOnConflict: {
-                            type: 'boolean',
-                            description: 'Whether to be notified on conflict.',
-                            optional: true
-                        }
-                    },
-                    required: ['debuggingMode', 'terminalId', 'ideId', 'user']
-                }
-            },
-            {
-                name: 'debuggerDeleteListener',
-                description: 'Stops a debug listener.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        debuggingMode: {
-                            type: 'string',
-                            description: 'The debugging mode.'
-                        },
-                        terminalId: {
-                            type: 'string',
-                            description: 'The terminal ID.'
-                        },
-                        ideId: {
-                            type: 'string',
-                            description: 'The IDE ID.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The user.'
-                        }
-                    },
-                    required: ['debuggingMode', 'terminalId', 'ideId', 'user']
-                }
-            },
-            {
-                name: 'debuggerSetBreakpoints',
-                description: 'Sets breakpoints.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        debuggingMode: {
-                            type: 'string',
-                            description: 'The debugging mode.'
-                        },
-                        terminalId: {
-                            type: 'string',
-                            description: 'The terminal ID.'
-                        },
-                        ideId: {
-                            type: 'string',
-                            description: 'The IDE ID.'
-                        },
-                        clientId: {
-                            type: 'string',
-                            description: 'The client ID.'
-                        },
-                        breakpoints: {
-                            type: 'array',
-                            description: 'An array of breakpoints.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The user.'
-                        },
-                        scope: {
-                            type: 'string',
-                            description: 'The debugger scope.',
-                            optional: true
-                        },
-                        systemDebugging: {
-                            type: 'boolean',
-                            description: 'Whether to enable system debugging.',
-                            optional: true
-                        },
-                        deactivated: {
-                            type: 'boolean',
-                            description: 'Whether to deactivate the breakpoints.',
-                            optional: true
-                        },
-                        syncScupeUrl: {
-                            type: 'string',
-                            description: 'The URL for scope synchronization.',
-                            optional: true
-                        }
-                    },
-                    required: ['debuggingMode', 'terminalId', 'ideId', 'clientId', 'breakpoints', 'user']
-                }
-            },
-            {
-                name: 'debuggerDeleteBreakpoints',
-                description: 'Deletes breakpoints.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        breakpoint: {
-                            type: 'object',
-                            description: 'The breakpoint to delete.'
-                        },
-                        debuggingMode: {
-                            type: 'string',
-                            description: 'The debugging mode.'
-                        },
-                        terminalId: {
-                            type: 'string',
-                            description: 'The terminal ID.'
-                        },
-                        ideId: {
-                            type: 'string',
-                            description: 'The IDE ID.'
-                        },
-                        requestUser: {
-                            type: 'string',
-                            description: 'The requesting user.'
-                        },
-                        scope: {
-                            type: 'string',
-                            description: 'The debugger scope.',
-                            optional: true
-                        }
-                    },
-                    required: ['breakpoint', 'debuggingMode', 'terminalId', 'ideId', 'requestUser']
-                }
-            },
-            {
-                name: 'debuggerAttach',
-                description: 'Attaches the debugger.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        debuggingMode: {
-                            type: 'string',
-                            description: 'The debugging mode.'
-                        },
-                        debuggeeId: {
-                            type: 'string',
-                            description: 'The ID of the debuggee.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The user.'
-                        },
-                        dynproDebugging: {
-                            type: 'boolean',
-                            description: 'Whether to enable Dynpro debugging.',
-                            optional: true
-                        }
-                    },
-                    required: ['debuggingMode', 'debuggeeId', 'user']
-                }
-            },
-            {
-                name: 'debuggerSaveSettings',
-                description: 'Saves debugger settings.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        settings: {
-                            type: 'string',
-                            description: 'The debugger settings.'
-                        }
-                    },
-                    required: ['settings']
-                }
-            },
-            {
-                name: 'debuggerStackTrace',
-                description: 'Retrieves the debugger stack trace.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        semanticURIs: {
-                            type: 'boolean',
-                            description: 'Whether to use semantic URIs.',
-                            optional: true
-                        }
-                    }
-                }
-            },
-            {
-                name: 'debuggerVariables',
-                description: 'Retrieves debugger variables.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        parents: {
-                            type: 'array',
-                            description: 'An array of parent variable names.'
-                        }
-                    },
-                    required: ['parents']
-                }
-            },
-            {
-                name: 'debuggerChildVariables',
-                description: 'Retrieves child variables of a debugger variable.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        parent: {
-                            type: 'array',
-                            description: 'The parent variable name.',
-                            optional: true
-                        }
-                    }
-                }
-            },
-            {
-                name: 'debuggerStep',
-                description: 'Performs a debugger step.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        steptype: {
-                            type: 'string',
-                            description: 'The type of step to perform.'
-                        },
-                        url: {
-                            type: 'string',
-                            description: 'The URL for step types "stepRunToLine" or "stepJumpToLine".',
-                            optional: true
-                        }
-                    },
-                    required: ['steptype']
-                }
-            },
-            {
-                name: 'debuggerGoToStack',
-                description: 'Navigates to a specific stack entry in the debugger.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        urlOrPosition: {
-                            type: 'string',
-                            description: 'The URL or position of the stack entry.'
-                        }
-                    },
-                    required: ['urlOrPosition']
-                }
-            },
-            {
-                name: 'debuggerSetVariableValue',
-                description: 'Sets the value of a debugger variable.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        variableName: {
-                            type: 'string',
-                            description: 'The name of the variable.'
-                        },
-                        value: {
-                            type: 'string',
-                            description: 'The new value of the variable.'
-                        }
-                    },
-                    required: ['variableName', 'value']
-                }
-            }
+            // {
+            //     name: 'debuggerListeners',
+            //     description: 'Retrieves a list of debugger listeners.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             debuggingMode: {
+            //                 type: 'string',
+            //                 description: 'The debugging mode.'
+            //             },
+            //             terminalId: {
+            //                 type: 'string',
+            //                 description: 'The terminal ID.'
+            //             },
+            //             ideId: {
+            //                 type: 'string',
+            //                 description: 'The IDE ID.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The user.'
+            //             },
+            //             checkConflict: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to check for conflicts.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['debuggingMode', 'terminalId', 'ideId', 'user']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerListen',
+            //     description: 'Listens for debugging events.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             debuggingMode: {
+            //                 type: 'string',
+            //                 description: 'The debugging mode.'
+            //             },
+            //             terminalId: {
+            //                 type: 'string',
+            //                 description: 'The terminal ID.'
+            //             },
+            //             ideId: {
+            //                 type: 'string',
+            //                 description: 'The IDE ID.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The user.'
+            //             },
+            //             checkConflict: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to check for conflicts.',
+            //                 optional: true
+            //             },
+            //             isNotifiedOnConflict: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to be notified on conflict.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['debuggingMode', 'terminalId', 'ideId', 'user']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerDeleteListener',
+            //     description: 'Stops a debug listener.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             debuggingMode: {
+            //                 type: 'string',
+            //                 description: 'The debugging mode.'
+            //             },
+            //             terminalId: {
+            //                 type: 'string',
+            //                 description: 'The terminal ID.'
+            //             },
+            //             ideId: {
+            //                 type: 'string',
+            //                 description: 'The IDE ID.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The user.'
+            //             }
+            //         },
+            //         required: ['debuggingMode', 'terminalId', 'ideId', 'user']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerSetBreakpoints',
+            //     description: 'Sets breakpoints.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             debuggingMode: {
+            //                 type: 'string',
+            //                 description: 'The debugging mode.'
+            //             },
+            //             terminalId: {
+            //                 type: 'string',
+            //                 description: 'The terminal ID.'
+            //             },
+            //             ideId: {
+            //                 type: 'string',
+            //                 description: 'The IDE ID.'
+            //             },
+            //             clientId: {
+            //                 type: 'string',
+            //                 description: 'The client ID.'
+            //             },
+            //             breakpoints: {
+            //                 type: 'array',
+            //                 description: 'An array of breakpoints.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The user.'
+            //             },
+            //             scope: {
+            //                 type: 'string',
+            //                 description: 'The debugger scope.',
+            //                 optional: true
+            //             },
+            //             systemDebugging: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to enable system debugging.',
+            //                 optional: true
+            //             },
+            //             deactivated: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to deactivate the breakpoints.',
+            //                 optional: true
+            //             },
+            //             syncScupeUrl: {
+            //                 type: 'string',
+            //                 description: 'The URL for scope synchronization.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['debuggingMode', 'terminalId', 'ideId', 'clientId', 'breakpoints', 'user']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerDeleteBreakpoints',
+            //     description: 'Deletes breakpoints.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             breakpoint: {
+            //                 type: 'object',
+            //                 description: 'The breakpoint to delete.'
+            //             },
+            //             debuggingMode: {
+            //                 type: 'string',
+            //                 description: 'The debugging mode.'
+            //             },
+            //             terminalId: {
+            //                 type: 'string',
+            //                 description: 'The terminal ID.'
+            //             },
+            //             ideId: {
+            //                 type: 'string',
+            //                 description: 'The IDE ID.'
+            //             },
+            //             requestUser: {
+            //                 type: 'string',
+            //                 description: 'The requesting user.'
+            //             },
+            //             scope: {
+            //                 type: 'string',
+            //                 description: 'The debugger scope.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['breakpoint', 'debuggingMode', 'terminalId', 'ideId', 'requestUser']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerAttach',
+            //     description: 'Attaches the debugger.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             debuggingMode: {
+            //                 type: 'string',
+            //                 description: 'The debugging mode.'
+            //             },
+            //             debuggeeId: {
+            //                 type: 'string',
+            //                 description: 'The ID of the debuggee.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The user.'
+            //             },
+            //             dynproDebugging: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to enable Dynpro debugging.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['debuggingMode', 'debuggeeId', 'user']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerSaveSettings',
+            //     description: 'Saves debugger settings.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             settings: {
+            //                 type: 'string',
+            //                 description: 'The debugger settings.'
+            //             }
+            //         },
+            //         required: ['settings']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerStackTrace',
+            //     description: 'Retrieves the debugger stack trace.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             semanticURIs: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to use semantic URIs.',
+            //                 optional: true
+            //             }
+            //         }
+            //     }
+            // },
+            // {
+            //     name: 'debuggerVariables',
+            //     description: 'Retrieves debugger variables.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             parents: {
+            //                 type: 'array',
+            //                 description: 'An array of parent variable names.'
+            //             }
+            //         },
+            //         required: ['parents']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerChildVariables',
+            //     description: 'Retrieves child variables of a debugger variable.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             parent: {
+            //                 type: 'array',
+            //                 description: 'The parent variable name.',
+            //                 optional: true
+            //             }
+            //         }
+            //     }
+            // },
+            // {
+            //     name: 'debuggerStep',
+            //     description: 'Performs a debugger step.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             steptype: {
+            //                 type: 'string',
+            //                 description: 'The type of step to perform.'
+            //             },
+            //             url: {
+            //                 type: 'string',
+            //                 description: 'The URL for step types "stepRunToLine" or "stepJumpToLine".',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['steptype']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerGoToStack',
+            //     description: 'Navigates to a specific stack entry in the debugger.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             urlOrPosition: {
+            //                 type: 'string',
+            //                 description: 'The URL or position of the stack entry.'
+            //             }
+            //         },
+            //         required: ['urlOrPosition']
+            //     }
+            // },
+            // {
+            //     name: 'debuggerSetVariableValue',
+            //     description: 'Sets the value of a debugger variable.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             variableName: {
+            //                 type: 'string',
+            //                 description: 'The name of the variable.'
+            //             },
+            //             value: {
+            //                 type: 'string',
+            //                 description: 'The new value of the variable.'
+            //             }
+            //         },
+            //         required: ['variableName', 'value']
+            //     }
+            // }
         ];
     }
 

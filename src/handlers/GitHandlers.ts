@@ -6,257 +6,257 @@ import { GitRepo, GitStaging } from 'abap-adt-api';
 export class GitHandlers extends BaseHandler {
     getTools(): ToolDefinition[] {
         return [
-            {
-                name: 'gitRepos',
-                description: 'Retrieves a list of Git repositories.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {}
-                }
-            },
-            {
-                name: 'gitExternalRepoInfo',
-                description: 'Retrieves information about an external Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repourl: {
-                            type: 'string',
-                            description: 'The URL of the repository.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['repourl']
-                }
-            },
-            {
-                name: 'gitCreateRepo',
-                description: 'Creates a new Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        packageName: {
-                            type: 'string',
-                            description: 'The name of the package.'
-                        },
-                        repourl: {
-                            type: 'string',
-                            description: 'The URL of the repository.'
-                        },
-                        branch: {
-                            type: 'string',
-                            description: 'The branch name.',
-                            optional: true
-                        },
-                        transport: {
-                            type: 'string',
-                            description: 'The transport.',
-                            optional: true
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['packageName', 'repourl']
-                }
-            },
-            {
-                name: 'gitPullRepo',
-                description: 'Pulls changes from a Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repoId: {
-                            type: 'string',
-                            description: 'The ID of the repository.'
-                        },
-                        branch: {
-                            type: 'string',
-                            description: 'The branch name.',
-                            optional: true
-                        },
-                        transport: {
-                            type: 'string',
-                            description: 'The transport.',
-                            optional: true
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['repoId']
-                }
-            },
-            {
-                name: 'gitUnlinkRepo',
-                description: 'Unlinks a Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repoId: {
-                            type: 'string',
-                            description: 'The ID of the repository.'
-                        }
-                    },
-                    required: ['repoId']
-                }
-            },
-            {
-                name: 'stageRepo',
-                description: 'Stages changes in a Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repo: {
-                            type: 'object',
-                            description: 'The Git repository object.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['repo']
-                }
-            },
-            {
-                name: 'pushRepo',
-                description: 'Pushes changes to a Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repo: {
-                            type: 'object',
-                            description: 'The Git repository object.'
-                        },
-                        staging: {
-                            type: 'object',
-                            description: 'The staging information object.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['repo', 'staging']
-                }
-            },
-            {
-                name: 'checkRepo',
-                description: 'Checks a Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repo: {
-                            type: 'string',
-                            description: 'The Git repository.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['repo']
-                }
-            },
-            {
-                name: 'remoteRepoInfo',
-                description: 'Retrieves information about a remote Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repo: {
-                            type: 'string',
-                            description: 'The Git repository.'
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['repo']
-                }
-            },
-            {
-                name: 'switchRepoBranch',
-                description: 'Switches the branch of a Git repository.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        repo: {
-                            type: 'string',
-                            description: 'The Git repository.'
-                        },
-                        branch: {
-                            type: 'string',
-                            description: 'The branch name.'
-                        },
-                        create: {
-                            type: 'boolean',
-                            description: 'Whether to create the branch if it doesn\'t exist.',
-                            optional: true
-                        },
-                        user: {
-                            type: 'string',
-                            description: 'The username.',
-                            optional: true
-                        },
-                        password: {
-                            type: 'string',
-                            description: 'The password.',
-                            optional: true
-                        }
-                    },
-                    required: ['repo', 'branch']
-                }
-            }
+            // {
+            //     name: 'gitRepos',
+            //     description: 'Retrieves a list of Git repositories.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {}
+            //     }
+            // },
+            // {
+            //     name: 'gitExternalRepoInfo',
+            //     description: 'Retrieves information about an external Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repourl: {
+            //                 type: 'string',
+            //                 description: 'The URL of the repository.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['repourl']
+            //     }
+            // },
+            // {
+            //     name: 'gitCreateRepo',
+            //     description: 'Creates a new Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             packageName: {
+            //                 type: 'string',
+            //                 description: 'The name of the package.'
+            //             },
+            //             repourl: {
+            //                 type: 'string',
+            //                 description: 'The URL of the repository.'
+            //             },
+            //             branch: {
+            //                 type: 'string',
+            //                 description: 'The branch name.',
+            //                 optional: true
+            //             },
+            //             transport: {
+            //                 type: 'string',
+            //                 description: 'The transport.',
+            //                 optional: true
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['packageName', 'repourl']
+            //     }
+            // },
+            // {
+            //     name: 'gitPullRepo',
+            //     description: 'Pulls changes from a Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repoId: {
+            //                 type: 'string',
+            //                 description: 'The ID of the repository.'
+            //             },
+            //             branch: {
+            //                 type: 'string',
+            //                 description: 'The branch name.',
+            //                 optional: true
+            //             },
+            //             transport: {
+            //                 type: 'string',
+            //                 description: 'The transport.',
+            //                 optional: true
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['repoId']
+            //     }
+            // },
+            // {
+            //     name: 'gitUnlinkRepo',
+            //     description: 'Unlinks a Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repoId: {
+            //                 type: 'string',
+            //                 description: 'The ID of the repository.'
+            //             }
+            //         },
+            //         required: ['repoId']
+            //     }
+            // },
+            // {
+            //     name: 'stageRepo',
+            //     description: 'Stages changes in a Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repo: {
+            //                 type: 'object',
+            //                 description: 'The Git repository object.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['repo']
+            //     }
+            // },
+            // {
+            //     name: 'pushRepo',
+            //     description: 'Pushes changes to a Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repo: {
+            //                 type: 'object',
+            //                 description: 'The Git repository object.'
+            //             },
+            //             staging: {
+            //                 type: 'object',
+            //                 description: 'The staging information object.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['repo', 'staging']
+            //     }
+            // },
+            // {
+            //     name: 'checkRepo',
+            //     description: 'Checks a Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repo: {
+            //                 type: 'string',
+            //                 description: 'The Git repository.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['repo']
+            //     }
+            // },
+            // {
+            //     name: 'remoteRepoInfo',
+            //     description: 'Retrieves information about a remote Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repo: {
+            //                 type: 'string',
+            //                 description: 'The Git repository.'
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['repo']
+            //     }
+            // },
+            // {
+            //     name: 'switchRepoBranch',
+            //     description: 'Switches the branch of a Git repository.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             repo: {
+            //                 type: 'string',
+            //                 description: 'The Git repository.'
+            //             },
+            //             branch: {
+            //                 type: 'string',
+            //                 description: 'The branch name.'
+            //             },
+            //             create: {
+            //                 type: 'boolean',
+            //                 description: 'Whether to create the branch if it doesn\'t exist.',
+            //                 optional: true
+            //             },
+            //             user: {
+            //                 type: 'string',
+            //                 description: 'The username.',
+            //                 optional: true
+            //             },
+            //             password: {
+            //                 type: 'string',
+            //                 description: 'The password.',
+            //                 optional: true
+            //             }
+            //         },
+            //         required: ['repo', 'branch']
+            //     }
+            // }
         ];
     }
 

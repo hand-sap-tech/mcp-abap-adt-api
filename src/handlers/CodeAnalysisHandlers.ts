@@ -21,174 +21,174 @@ export class CodeAnalysisHandlers extends BaseHandler {
                     required: ['code']
                 }
             },
-            {
-                name: 'syntaxCheckCdsUrl',
-                description: 'Perform ABAP syntax check with CDS URL',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        cdsUrl: { type: 'string' }
-                    },
-                    required: ['cdsUrl']
-                }
-            },
-            {
-                name: 'codeCompletion',
-                description: 'Get code completion suggestions',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        sourceUrl: { type: 'string' },
-                        source: { type: 'string' },
-                        line: { type: 'number' },
-                        column: { type: 'number' }
-                    },
-                    required: ['sourceUrl', 'source', 'line', 'column']
-                }
-            },
-            {
-                name: 'findDefinition',
-                description: 'Find symbol definition',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        url: { type: 'string' },
-                        source: { type: 'string' },
-                        line: { type: 'number' },
-                        startCol: { type: 'number' },
-                        endCol: { type: 'number' },
-                        implementation: { type: 'boolean', optional: true },
-                        mainProgram: { type: 'string', optional: true }
-                    },
-                    required: ['url', 'source', 'line', 'startCol', 'endCol']
-                }
-            },
-            {
-                name: 'usageReferences',
-                description: 'Find symbol references',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        url: { type: 'string' },
-                        line: { type: 'number', optional: true },
-                        column: { type: 'number', optional: true }
-                    },
-                    required: ['url']
-                }
-            },
-            {
-                name: 'syntaxCheckTypes',
-                description: 'Retrieves syntax check types.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {}
-                }
-            },
-            {
-                name: 'codeCompletionFull',
-                description: 'Performs full code completion.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        sourceUrl: { type: 'string' },
-                        source: { type: 'string' },
-                        line: { type: 'number' },
-                        column: { type: 'number' },
-                        patternKey: { type: 'string' }
-                    },
-                    required: ['sourceUrl', 'source', 'line', 'column', 'patternKey']
-                }
-            },
-            {
-                name: 'runClass',
-                description: 'Runs a class.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        className: { type: 'string' }
-                    },
-                    required: ['className']
-                }
-            },
-            {
-                name: 'codeCompletionElement',
-                description: 'Retrieves code completion element information.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        sourceUrl: { type: 'string' },
-                        source: { type: 'string' },
-                        line: { type: 'number' },
-                        column: { type: 'number' }
-                    },
-                    required: ['sourceUrl', 'source', 'line', 'column']
-                }
-            },
-            {
-                name: 'usageReferenceSnippets',
-                description: 'Retrieves usage reference snippets.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        references: { type: 'array' }
-                    },
-                    required: ['references']
-                }
-            },
-            {
-                name: 'fixProposals',
-                description: 'Retrieves fix proposals.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        url: { type: 'string' },
-                        source: { type: 'string' },
-                        line: { type: 'number' },
-                        column: { type: 'number' }
-                    },
-                    required: ['url', 'source', 'line', 'column']
-                }
-            },
-            {
-                name: 'fixEdits',
-                description: 'Applies fix edits.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        proposal: { type: 'string' },
-                        source: { type: 'string' }
-                    },
-                    required: ['proposal', 'source']
-                }
-            },
-            {
-                name: 'fragmentMappings',
-                description: 'Retrieves fragment mappings.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        url: { type: 'string' },
-                        type: { type: 'string' },
-                        name: { type: 'string' }
-                    },
-                    required: ['url', 'type', 'name']
-                }
-            },
-            {
-                name: 'abapDocumentation',
-                description: 'Retrieves ABAP documentation.',
-                inputSchema: {
-                    type: 'object',
-                    properties: {
-                        objectUri: { type: 'string' },
-                        body: { type: 'string' },
-                        line: { type: 'number' },
-                        column: { type: 'number' },
-                        language: { type: 'string', optional: true }
-                    },
-                    required: ['objectUri', 'body', 'line', 'column']
-                }
-            }
+            // {
+            //     name: 'syntaxCheckCdsUrl',
+            //     description: 'Perform ABAP syntax check with CDS URL',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             cdsUrl: { type: 'string' }
+            //         },
+            //         required: ['cdsUrl']
+            //     }
+            // },
+            // {
+            //     name: 'codeCompletion',
+            //     description: 'Get code completion suggestions',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             sourceUrl: { type: 'string' },
+            //             source: { type: 'string' },
+            //             line: { type: 'number' },
+            //             column: { type: 'number' }
+            //         },
+            //         required: ['sourceUrl', 'source', 'line', 'column']
+            //     }
+            // },
+            // {
+            //     name: 'findDefinition',
+            //     description: 'Find symbol definition',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             url: { type: 'string' },
+            //             source: { type: 'string' },
+            //             line: { type: 'number' },
+            //             startCol: { type: 'number' },
+            //             endCol: { type: 'number' },
+            //             implementation: { type: 'boolean', optional: true },
+            //             mainProgram: { type: 'string', optional: true }
+            //         },
+            //         required: ['url', 'source', 'line', 'startCol', 'endCol']
+            //     }
+            // },
+            // {
+            //     name: 'usageReferences',
+            //     description: 'Find symbol references',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             url: { type: 'string' },
+            //             line: { type: 'number', optional: true },
+            //             column: { type: 'number', optional: true }
+            //         },
+            //         required: ['url']
+            //     }
+            // },
+            // {
+            //     name: 'syntaxCheckTypes',
+            //     description: 'Retrieves syntax check types.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {}
+            //     }
+            // },
+            // {
+            //     name: 'codeCompletionFull',
+            //     description: 'Performs full code completion.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             sourceUrl: { type: 'string' },
+            //             source: { type: 'string' },
+            //             line: { type: 'number' },
+            //             column: { type: 'number' },
+            //             patternKey: { type: 'string' }
+            //         },
+            //         required: ['sourceUrl', 'source', 'line', 'column', 'patternKey']
+            //     }
+            // },
+            // {
+            //     name: 'runClass',
+            //     description: 'Runs a class.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             className: { type: 'string' }
+            //         },
+            //         required: ['className']
+            //     }
+            // },
+            // {
+            //     name: 'codeCompletionElement',
+            //     description: 'Retrieves code completion element information.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             sourceUrl: { type: 'string' },
+            //             source: { type: 'string' },
+            //             line: { type: 'number' },
+            //             column: { type: 'number' }
+            //         },
+            //         required: ['sourceUrl', 'source', 'line', 'column']
+            //     }
+            // },
+            // {
+            //     name: 'usageReferenceSnippets',
+            //     description: 'Retrieves usage reference snippets.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             references: { type: 'array' }
+            //         },
+            //         required: ['references']
+            //     }
+            // },
+            // {
+            //     name: 'fixProposals',
+            //     description: 'Retrieves fix proposals.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             url: { type: 'string' },
+            //             source: { type: 'string' },
+            //             line: { type: 'number' },
+            //             column: { type: 'number' }
+            //         },
+            //         required: ['url', 'source', 'line', 'column']
+            //     }
+            // },
+            // {
+            //     name: 'fixEdits',
+            //     description: 'Applies fix edits.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             proposal: { type: 'string' },
+            //             source: { type: 'string' }
+            //         },
+            //         required: ['proposal', 'source']
+            //     }
+            // },
+            // {
+            //     name: 'fragmentMappings',
+            //     description: 'Retrieves fragment mappings.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             url: { type: 'string' },
+            //             type: { type: 'string' },
+            //             name: { type: 'string' }
+            //         },
+            //         required: ['url', 'type', 'name']
+            //     }
+            // },
+            // {
+            //     name: 'abapDocumentation',
+            //     description: 'Retrieves ABAP documentation.',
+            //     inputSchema: {
+            //         type: 'object',
+            //         properties: {
+            //             objectUri: { type: 'string' },
+            //             body: { type: 'string' },
+            //             line: { type: 'number' },
+            //             column: { type: 'number' },
+            //             language: { type: 'string', optional: true }
+            //         },
+            //         required: ['objectUri', 'body', 'line', 'column']
+            //     }
+            // }
         ];
     }
 
